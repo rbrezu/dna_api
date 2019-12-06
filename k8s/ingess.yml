@@ -1,0 +1,19 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.bluemix.net/redirect-to-https: "True"
+  name: ingress
+spec:
+  tls:
+    - hosts:
+      - dna.whitesoftware.ro
+  rules:
+    - host: dna.whitesoftware.ro
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: dna-service
+            servicePort: 8888
