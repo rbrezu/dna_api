@@ -1,0 +1,17 @@
+version: '3'
+services:
+  webapp:
+    image: whitesoftware/dnaapi
+    command: python3 start.py
+    ports:
+      - 8888:8888
+    environment:
+      MONGODB_URL: 'mongodb://mongodb:27017'
+    volumes:
+      - ./application-docker.conf:/usr/src/app/application.conf
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - /Users/razvan.brezulianu/Workspace/peopleAPI/dbdata:/data/db
